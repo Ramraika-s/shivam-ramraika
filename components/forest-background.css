@@ -1,0 +1,9 @@
+.bg-night {
+    background-color: #000; /* Example night color */
+    /* Add other night-specific styles here */
+  }
+  
+  .bg-day {
+    background-color: #fff; /* Example day color */
+    /* Add other day-specific styles here */
+  }
