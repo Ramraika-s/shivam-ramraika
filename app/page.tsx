@@ -39,10 +39,7 @@ export default function Home() {
     <>
     <Head>
         {/* Add the Google Site Verification meta tag */}
-        <meta
-          name="google-site-verification"
-          content="r6UvpAi_sOxqo2KPO1LByWNFE2v56FgnbKCnOWh3EyI"
-        />
+ <meta name="google-site-verification" content="r6UvpAi_sOxqo2KPO1LByWNFE2v56FgnbKCnOWh3EyI" />
       </Head>
 
       <ContentStump id="about" title="About Me" hideTitle>
