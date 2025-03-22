@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { GraduationCap, Calendar, Building } from 'lucide-react'
+import { useTheme } from '../theme-provider'
 
 export default function Education() {
+  const { theme } = useTheme();
+
   return (
     <motion.div
       className="relative"
@@ -17,22 +20,27 @@ export default function Education() {
           <div className="flex items-start space-x-4">
             <GraduationCap className="w-6 h-6 text-forest-accent mt-1" />
             <div>
-              <h3 className="text-xl font-bold text-forest-light">Bachelor of Technology (B.Tech) in Computer Science</h3>
+              <h3 className={`text-xl font-bold ${theme === 'day' ? 'text-black' : 'text-white'}`}>
+                Bachelor of Technology (B.Tech) in Computer Science
+              </h3>
             </div>
           </div>
           
           <div className="flex items-center space-x-4">
             <Building className="w-5 h-5 text-forest-accent" />
-            <p className="text-forest-light">KIIT University, Bhubaneswar, India</p>
+            <p className={`${theme === 'day' ? 'text-black' : 'text-white'}`}>
+              KIIT University, Bhubaneswar, India
+            </p>
           </div>
           
           <div className="flex items-center space-x-4">
             <Calendar className="w-5 h-5 text-forest-accent" />
-            <p className="text-forest-light">Batch: 2024-2028</p>
+            <p className={`${theme === 'day' ? 'text-black' : 'text-white'}`}>
+              Batch: 2024-2028
+            </p>
           </div>
         </div>
       </div>
     </motion.div>
   )
 }
-

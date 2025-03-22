@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { Clock } from 'lucide-react'
+import { useTheme } from '../theme-provider'
 
 export default function Experience() {
+  const { theme } = useTheme();
+
   return (
     <motion.div
       className="relative"
@@ -13,12 +16,15 @@ export default function Experience() {
     >
       <div className="absolute inset-0 bg-forest-accent/10 rounded-lg blur-xl" />
       <div className="relative bg-forest-dark/30 rounded-lg p-8 backdrop-blur-sm border border-forest-accent/20">
-      <div className="flex items-center justify-center space-x-4 text-black dark:text-forest-light">
-        <Clock className="w-6 h-6 text-forest-accent animate-pulse" />
-        <p className="text-lg">Coming Soon...</p>
-      </div>
+        <div
+          className={`flex items-center justify-center space-x-4 ${
+            theme === 'day' ? 'text-black' : 'text-forest-light'
+          }`}
+        >
+          <Clock className="w-6 h-6 text-forest-accent animate-pulse" />
+          <p className="text-lg">Coming Soon...</p>
+        </div>
       </div>
     </motion.div>
   )
 }
-
