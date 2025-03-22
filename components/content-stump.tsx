@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useTheme } from './theme-provider' // Assuming you have this hook
 
 interface ContentStumpProps {
   id: string
@@ -14,6 +15,7 @@ interface ContentStumpProps {
 export default function ContentStump({ id, title, children, hideTitle = false }: ContentStumpProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { theme } = useTheme(); // Use the theme state
 
   return (
     <motion.section
@@ -25,7 +27,7 @@ export default function ContentStump({ id, title, children, hideTitle = false }:
       transition={{ duration: 0.8 }}
     >
       {!hideTitle && (
-        <h2 className="text-3xl font-bold mb-6 text-forest-light text-center">
+        <h2 className={`text-3xl font-bold mb-6 ${theme === 'day' ? 'text-black' : 'text-white'} text-center`}>
           {title}
         </h2>
       )}
@@ -38,4 +40,3 @@ export default function ContentStump({ id, title, children, hideTitle = false }:
     </motion.section>
   )
 }
-
