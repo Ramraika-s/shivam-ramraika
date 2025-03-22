@@ -10,14 +10,18 @@ export default function ForestBackground() {
   const { theme } = useTheme()
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    
     const canvas = canvasRef.current
     if (!canvas) return
 
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    if (typeof window !== 'undefined') {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
 
     class Firefly {
       x: number
@@ -28,25 +32,35 @@ export default function ForestBackground() {
       brightness: number
       color: string
 
-      constructor() {
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
-        this.size = Math.random() * 2 + 1
-        this.speedX = Math.random() * 2 - 1
-        this.speedY = Math.random() * 2 - 1
-        this.brightness = Math.random()
+      constructor(private index: number) {
+        // Use stable values for initial positions to prevent hydration mismatch
+        const stableRandom = (seed: number) => {
+          const x = Math.sin(seed) * 10000
+          return x - Math.floor(x)
+        }
+        
+        const seed = this.index
+        this.x = stableRandom(seed) * (canvas?.width || 0)
+        this.y = stableRandom(seed + 1) * (canvas?.height || 0)
+        this.size = stableRandom(seed + 2) * 2 + 1
+        this.speedX = stableRandom(seed + 3) * 2 - 1
+        this.speedY = stableRandom(seed + 4) * 2 - 1
+        this.brightness = stableRandom(seed + 5)
         this.color = theme === 'night' ? '#52d3ff' : '#34d399'
       }
 
       update() {
         this.x += this.speedX
         this.y += this.speedY
-        this.brightness = Math.sin(Date.now() / 1000) * 0.5 + 0.5
+        // Use animation frame count instead of Date.now() for consistent timing
+        this.brightness = Math.sin(animationFrameCount / 60) * 0.5 + 0.5
 
-        if (this.x < 0) this.x = canvas.width
-        if (this.x > canvas.width) this.x = 0
-        if (this.y < 0) this.y = canvas.height
-        if (this.y > canvas.height) this.y = 0
+        if (canvas) {
+          if (this.x < 0) this.x = canvas.width
+          if (this.x > canvas.width) this.x = 0
+          if (this.y < 0) this.y = canvas.height
+          if (this.y > canvas.height) this.y = 0
+        }
       }
 
       draw(ctx: CanvasRenderingContext2D) {
@@ -64,8 +78,14 @@ export default function ForestBackground() {
       }
     }
 
-    const fireflies: Firefly[] = Array.from({ length: 50 }, () => new Firefly())
+    let fireflyIndex = 0
+    const fireflies: Firefly[] = Array.from({ length: 50 }, () => {
+      const firefly = new Firefly(fireflyIndex)
+      fireflyIndex++
+      return firefly
+    })
     let animationId: number
+    let animationFrameCount = 0
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -73,14 +93,17 @@ export default function ForestBackground() {
         firefly.update()
         firefly.draw(ctx)
       })
+      animationFrameCount++
       animationId = requestAnimationFrame(animate)
     }
 
     animate()
 
     const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      if (canvas && typeof window !== 'undefined') {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+      }
     }
 
     window.addEventListener('resize', handleResize)
@@ -114,4 +137,3 @@ export default function ForestBackground() {
     </div>
   )
 }
-
