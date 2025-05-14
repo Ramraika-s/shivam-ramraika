@@ -21,6 +21,37 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <meta name="google-site-verification" content="r6UvpAi_sOxqo2KPO1LByWNFE2v56FgnbKCnOWh3EyI" />
+        <meta name="msvalidate.01" content="https://shivam-ramraika.vercel.app/" />
+        <meta property="og:title" content="Shivam Ramraika's Portfolio" />
+        <meta property="og:description" content="Computer Science Student at KIIT University" />
+        <meta property="og:url" content="https://shivam-ramraika.vercel.app" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://shivam-ramraika.vercel.app/og-image.jpg" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://shivam-ramraika.vercel.app",
+            "name": "Shivam Ramraika's Portfolio",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://shivam-ramraika.vercel.app/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Shivam Ramraika",
+            "url": "https://shivam-ramraika.vercel.app",
+            "sameAs": [
+              "https://www.linkedin.com/in/shivam-ramraika",
+              "https://github.com/shivam-ramraika"
+            ]
+          })}
+        </script>
       </head>
       <body className={`${inter.className} min-h-screen`}>
         <ThemeProvider>
