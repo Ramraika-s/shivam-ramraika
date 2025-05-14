@@ -46,14 +46,15 @@ export default function ForestBackground() {
         this.speedX = stableRandom(seed + 3) * 2 - 1
         this.speedY = stableRandom(seed + 4) * 2 - 1
         this.brightness = stableRandom(seed + 5)
-        this.color = theme === 'night' ? '#52d3ff' : '#34d399'
+        this.color = theme === 'night' ? '#34d399' : '#1e3a8a'; // Green for night, dark blue for day
       }
 
       update() {
         this.x += this.speedX
         this.y += this.speedY
-        // Use animation frame count instead of Date.now() for consistent timing
-        this.brightness = Math.sin(animationFrameCount / 60) * 0.5 + 0.5
+        this.brightness = theme === 'night' 
+          ? Math.sin(animationFrameCount / 60) * 0.5 + 0.8 // Higher base brightness for night
+          : Math.sin(animationFrameCount / 60) * 0.5 + 0.6; // Adjusted brightness for day
 
         if (canvas) {
           if (this.x < 0) this.x = canvas.width
@@ -69,9 +70,10 @@ export default function ForestBackground() {
           this.x, this.y, 0,
           this.x, this.y, this.size * 2
         )
-        const alpha = this.brightness * 0.5
-        gradient.addColorStop(0, `${this.color}${Math.floor(alpha * 255).toString(16).padStart(2, '0')}`)
-        gradient.addColorStop(1, `${this.color}00`)
+        const alpha = this.brightness * 0.9 // Further increase alpha multiplier for better visibility
+        const [r, g, b] = this.color === '#34d399' ? [52, 211, 153] : [30, 58, 138] // Extract RGB values for green and dark blue
+        gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${alpha})`)
+        gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`)
         ctx.fillStyle = gradient
         ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2)
         ctx.fill()
@@ -117,7 +119,7 @@ export default function ForestBackground() {
   return (
     <div className={`fixed inset-0 transition-colors duration-1000 ${theme === 'night' ? 'bg-night' : 'bg-day'}`}>
       <motion.div
-        className="absolute inset-0 bg-[url('/trees.svg')] bg-repeat-x bg-bottom opacity-70"
+        className="absolute inset-0 bg-[url('/trees.png')] bg-repeat-x bg-bottom opacity-70"
         animate={{
           backgroundPositionX: ["0%", "-100%"]
         }}

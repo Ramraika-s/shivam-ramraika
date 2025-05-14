@@ -16,7 +16,7 @@ export default function About() {
         transition={{ duration: 0.5 }}
       >
         <h1 className={`text-4xl font-bold ${theme === 'day' ? 'text-black' : 'text-white'} mb-4`}>Shivam Ramraika</h1>
-        <p className={`text-xl ${theme === 'day' ? 'text-black' : 'text-white'} text-forest-accent`}>Computer Science Student at KIIT University</p>
+        <p className={`text-xl ${theme === 'day' ? 'text-black' : 'text-forest-accent'} text-forest-accent`}>Computer Science Student at KIIT University</p>
       </motion.div>
 
       <motion.div

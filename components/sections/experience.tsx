@@ -18,7 +18,7 @@ export default function Experience() {
       <div className="relative bg-forest-dark/30 rounded-lg p-8 backdrop-blur-sm border border-forest-accent/20">
         <div
           className={`flex items-center justify-center space-x-4 ${
-            theme === 'day' ? 'text-black' : 'text-forest-light'
+            theme === 'day' ? 'text-black' : 'text-white'
           }`}
         >
           <Clock className="w-6 h-6 text-forest-accent animate-pulse" />

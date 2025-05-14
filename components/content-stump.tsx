@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { useTheme } from './theme-provider' // Assuming you have this hook
+import { useTheme } from './theme-provider'
 
 interface ContentStumpProps {
   id: string
@@ -15,7 +15,7 @@ interface ContentStumpProps {
 export default function ContentStump({ id, title, children, hideTitle = false }: ContentStumpProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const { theme } = useTheme(); // Use the theme state
+  const { theme } = useTheme(); 
 
   return (
     <motion.section

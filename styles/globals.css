@@ -219,7 +219,7 @@ body {
 }
 
 .floating {
-  animation: float 3s ease-in-out infinite;
+  animation: float 1s ease-in-out infinite;
 }
 
 @media (max-width: 640px) {

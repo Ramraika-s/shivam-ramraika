@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Mail, Github, Linkedin, MapPin } from 'lucide-react'
 import Link from 'next/link'
+import { useTheme } from '../theme-provider'
 
 const contactInfo = [
   {
@@ -32,6 +33,8 @@ const contactInfo = [
 ]
 
 export default function Contact() {
+  const { theme } = useTheme();
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {contactInfo.map((info, index) => {
@@ -49,18 +52,18 @@ export default function Contact() {
               <div className="flex items-start space-x-4">
                 <Icon className="w-6 h-6 text-forest-accent flex-shrink-0 mt-1" />
                 <div className="flex-1">
-                  <div className="text-sm text-forest-light">{info.label}</div>
+                  <div className={`text-sm ${theme === 'day' ? 'text-black' : 'text-white'}`}>{info.label}</div>
                   {info.href ? (
                     <Link
                       href={info.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-forest-light hover:text-forest-accent transition-colors block"
+                      className={`${theme === 'day' ? 'text-black' : 'text-white'} hover:text-forest-accent transition-colors block`}
                     >
                       {info.value}
                     </Link>
                   ) : (
-                    <div className="text-forest-light">{info.value}</div>
+                    <div className={`${theme === 'day' ? 'text-black' : 'text-white'}`}>{info.value}</div>
                   )}
                 </div>
               </div>

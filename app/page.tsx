@@ -1,4 +1,4 @@
-'use client'; // Ensures the code runs on the client side
+'use client'; 
 
 import ContentStump from '../components/content-stump';
 import About from '../components/sections/about';
