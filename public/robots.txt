@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://shivam-ramraika.vercel.app/
+
+# Sitemaps
+Sitemap: https://shivam-ramraika.vercel.app/sitemap.xml
