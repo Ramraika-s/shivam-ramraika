@@ -5,6 +5,7 @@ import ForestBackground from '../components/forest-background'
 import CursorEffect from '../components/cursor-effect'
 import ThemeToggle from '../components/theme-toggle'
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -35,6 +36,7 @@ export default function RootLayout({
           <ThemeToggle />
         </ThemeProvider>
       <SpeedInsights />
+      <Analytics />
       </body>
     </html>
   )
