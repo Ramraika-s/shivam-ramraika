@@ -1,27 +1,9 @@
 # *
 User-agent: *
 Allow: /
-Crawl-delay: 2
-Clean-param: *
 
 # Host
 Host: https://shivam-ramraika.vercel.app
 
 # Sitemaps
 Sitemap: https://shivam-ramraika.vercel.app/sitemap.xml
-
-# Bing Webmaster Tools Verification
-meta name="msvalidate.01" content="https://shivam-ramraika.vercel.app/"
-
-# Updated rules for Bing
-User-agent: bingbot
-Crawl-delay: 1
-Allow: /
-
-# Host
-Host: https://shivam-ramraika.vercel.app
-
-# Sitemaps
-Sitemap: https://shivam-ramraika.vercel.app/sitemap.xml
-Sitemap: https://shivam-ramraika.vercel.app/sitemap-about.xml
-Sitemap: https://shivam-ramraika.vercel.app/sitemap-contact.xml
