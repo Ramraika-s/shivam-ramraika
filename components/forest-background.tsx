@@ -119,7 +119,7 @@ export default function ForestBackground() {
   return (
     <div className={`fixed inset-0 transition-colors duration-1000 ${theme === 'night' ? 'bg-night' : 'bg-day'}`}>
       <motion.div
-        className="absolute inset-0 bg-[url('/trees.png')] bg-repeat-x bg-bottom opacity-70"
+        className="absolute inset-0 opacity-70"
         animate={{
           backgroundPositionX: ["0%", "-100%"]
         }}

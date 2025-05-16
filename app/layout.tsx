@@ -9,10 +9,12 @@ import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ['latin'] })
 
+export const metadataBase = new URL("https://shivam-ramraika.vercel.app");
+
 export const metadata = {
+  metadataBase,
   title: "Shivam Ramraika's Portfolio",
   description: 'Computer Science Student at KIIT University',
-  themeColor: "#461616",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -31,6 +33,10 @@ export const metadata = {
     "twitter:image": "/og-image.jpg",
     "og:image": "/og-image.jpg",
   }
+};
+
+export const viewport = {
+  themeColor: "#461616",
 };
 
 export default function RootLayout({
