@@ -9,8 +9,11 @@
     --forest-light: 0 0 0;
     --forest-accent: 34 197 94;
     --forest-accent-dark: 21 128 61;
-    --content-bg: 255 255 255;
-    --nav-bg: 255 255 255;
+    --content-bg: 232 240 254; /* softer, soothing off-white */
+    --nav-bg: 232 240 254;
+    --section-shadow: 0 0 24px 0 rgba(0, 0, 0); /* green accent shadow */
+    --section-border: 0 0 0 2px rgba(0, 0, 0); /* green accent border */
+    --section-border-color: rgba(34, 197, 94, 0.18);
   }
 
   :root[data-theme='night'] {
@@ -19,8 +22,11 @@
     --forest-light: 229 231 235;
     --forest-accent: 52 211 153;
     --forest-accent-dark: 16 185 129;
-    --content-bg: 17 24 39;
-    --nav-bg: 17 24 39;
+    --content-bg: 23 32 42; /* soothing dark blue-gray */
+    --nav-bg: 23 32 42;
+    --section-shadow: 0 0 32px 0 rgba(52, 211, 153); /* teal accent shadow */
+    --section-border: 0 0 0 2px rgba(52, 211, 153); /* teal accent border */
+    --section-border-color: rgba(52, 211, 153, 0.28);
   }
 
   ::-webkit-scrollbar {
@@ -52,6 +58,16 @@
 .bg-forest-dark\/90 {
   background-color: var(--forest-dark);
   opacity: 0.9;
+}
+
+.bg-forest-accent\/40 {
+  background-color: var(--forest-accent);
+  opacity: 0.4;
+}
+
+.bg-forest-accent\/30 {
+  background-color: var(--forest-accent);
+  opacity: 0.3;
 }
 
 .bg-forest-accent\/20 {
@@ -152,8 +168,8 @@ body {
   background-color: rgba(var(--content-bg), 0.05);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  box-shadow: 0 0 20px rgb(0, 0, 0);
-  border: 1px solid rgba(var(--forest-accent), 0.1);
+  box-shadow: var(--section-shadow);
+  border: var(--section-border);
 }
 
 .content-section::before {
@@ -162,7 +178,7 @@ body {
   inset: 0;
   border-radius: 0.5rem;
   padding: 1px;
-  background: linear-gradient(to bottom right, rgba(var(--forest-accent), 0.2), transparent);
+  background: linear-gradient(to bottom right, var(--section-border-color), transparent);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -222,6 +238,10 @@ body {
 
 .floating {
   animation: float 1s ease-in-out infinite;
+}
+
+.hide-default-cursor {
+  cursor: none;
 }
 
 @media (max-width: 640px) {

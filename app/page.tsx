@@ -22,7 +22,7 @@ export const metadata = {
     title: "Shivam Ramraika – Developer Portfolio",
     description: "Explore Shivam's projects, skills, and achievements in tech.",
     images: ["/og-image.jpg"],
-    creator: "@yourTwitterHandle", // Replace with your handle or remove this line
+    // creator: "@yourTwitterHandle", // Replace with your handle or remove this line
   },
 };
 

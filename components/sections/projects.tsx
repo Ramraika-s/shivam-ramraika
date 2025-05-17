@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Calculator, ImageIcon, Github } from 'lucide-react'
 import Link from 'next/link'
+import { useTheme } from '../theme-provider'
 
 const projects = [
   {
@@ -22,6 +23,8 @@ const projects = [
 ]
 
 export default function Projects() {
+  const { theme } = useTheme();
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {projects.map((project, index) => {
@@ -35,7 +38,7 @@ export default function Projects() {
             transition={{ duration: 0.5, delay: index * 0.2 }}
           >
             <div className="absolute inset-0 bg-forest-accent/20 rounded-lg blur-xl" />
-            <div className="relative bg-forest-dark/30 rounded-lg p-6 backdrop-blur-sm border border-forest-accent/20">
+            <div className={`relative rounded-lg p-6 h-full backdrop-blur-sm ${theme === 'day' ? 'content-bg ' : 'content-bg '}`}>
               <div className="mb-4">
                 <Icon className="w-12 h-12 text-forest-accent" />
               </div>

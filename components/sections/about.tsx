@@ -26,13 +26,13 @@ export default function About() {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <p className={`leading-relaxed ${theme === 'day' ? 'text-black' : 'text-white'}`}>
-          I am a Computer Science student at KIIT University, Bhubaneswar, with a deep interest in software development, AI, and machine learning. I'm passionate about creating impactful applications and continuously learning new technologies. I have a strong foundation in frontend development and problem-solving, and I am working towards becoming a proficient full-stack developer.
+          I am a Computer Science student at KIIT University, Bhubaneswar, with a deep interest in software development, AI, and machine learning. I&#39;m passionate about creating impactful applications and continuously learning new technologies. I have a strong foundation in frontend development and problem-solving, and I am working towards becoming a proficient full-stack developer.
         </p>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <motion.div
-          className="bg-forest-dark/30 rounded-lg p-6 backdrop-blur-sm"
+          className="bg-forest-dark/30 rounded-lg p-6 backdrop-blur-sm border border-forest-accent/40"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -49,7 +49,7 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          className="bg-forest-dark/30 rounded-lg p-6 backdrop-blur-sm"
+          className="bg-forest-dark/30 rounded-lg p-6 backdrop-blur-sm border border-forest-accent/40"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -66,7 +66,7 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          className="bg-forest-dark/30 rounded-lg p-6 backdrop-blur-sm"
+          className="bg-forest-dark/30 rounded-lg p-6 backdrop-blur-sm border border-forest-accent/40"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
@@ -81,7 +81,7 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          className="bg-forest-dark/30 rounded-lg p-6 backdrop-blur-sm"
+          className="bg-forest-dark/30 rounded-lg p-6 backdrop-blur-sm border border-forest-accent/40"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}

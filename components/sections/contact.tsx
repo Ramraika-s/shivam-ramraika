@@ -48,7 +48,7 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <div className="absolute inset-0 bg-forest-accent/10 rounded-lg blur-xl" />
-            <div className="relative bg-forest-dark/50 rounded-lg p-6 backdrop-blur-sm border border-forest-accent/20">
+            <div className={`relative rounded-lg p-6 h-full backdrop-blur-sm ${theme === 'day' ? 'border border-forest-accent/30 content-bg ' : 'border border-forest-accent/30 content-bg '}`}>
               <div className="flex items-start space-x-4">
                 <Icon className="w-6 h-6 text-forest-accent flex-shrink-0 mt-1" />
                 <div className="flex-1">

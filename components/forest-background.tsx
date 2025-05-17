@@ -46,7 +46,7 @@ export default function ForestBackground() {
         this.speedX = stableRandom(seed + 3) * 2 - 1
         this.speedY = stableRandom(seed + 4) * 2 - 1
         this.brightness = stableRandom(seed + 5)
-        this.color = theme === 'night' ? '#34d399' : '#1e3a8a'; // Green for night, dark blue for day
+        this.color = theme === 'night' ? '#34d399' : '#000000'; // Green for night, black for day
       }
 
       update() {
@@ -65,13 +65,17 @@ export default function ForestBackground() {
       }
 
       draw(ctx: CanvasRenderingContext2D) {
+        // Always use the latest theme for color
+        const isNight = theme === 'night';
+        const currentColor = isNight ? '#34d399' : '#222b3a'; // Green for night, deep blue-gray for day
         ctx.beginPath()
         const gradient = ctx.createRadialGradient(
           this.x, this.y, 0,
           this.x, this.y, this.size * 2
         )
-        const alpha = this.brightness * 0.9 // Further increase alpha multiplier for better visibility
-        const [r, g, b] = this.color === '#34d399' ? [52, 211, 153] : [30, 58, 138] // Extract RGB values for green and dark blue
+        // Use much higher alpha for day mode for better visibility
+        const alpha = isNight ? this.brightness * 0.9 : Math.max(this.brightness * 2.2, 0.25);
+        const [r, g, b] = currentColor === '#34d399' ? [52, 211, 153] : [34, 43, 56]
         gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${alpha})`)
         gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`)
         ctx.fillStyle = gradient
@@ -134,7 +138,7 @@ export default function ForestBackground() {
       />
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 z-10 mix-blend-screen"
+        className={`absolute inset-0 z-10${theme === 'night' ? ' mix-blend-screen' : ' mix-blend-multiply'}`}
       />
     </div>
   )

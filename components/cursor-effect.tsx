@@ -30,17 +30,25 @@ export default function CursorEffect() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
+  useEffect(() => {
+    // Hide default cursor
+    document.body.classList.add('hide-default-cursor');
+    return () => {
+      document.body.classList.remove('hide-default-cursor');
+    };
+  }, []);
+
   return (
     <>
       {/* Main cursor */}
       <motion.div
         ref={cursorRef}
-        className="fixed w-6 h-6 pointer-events-none z-50 mix-blend-screen"
+        className="fixed w-9 h-9 pointer-events-none z-50 ${theme === 'night' ? ' mix-blend-screen' : ' mix-blend-multiply'}"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="absolute inset-0 bg-forest-accent rounded-full blur-md" />
+        <div className="absolute inset-0 ${theme === 'night' ? ' forest-accent' : ' forest-accent'} rounded-full blur-md" />
       </motion.div>
 
       {/* Trailing elements */}
@@ -48,7 +56,7 @@ export default function CursorEffect() {
         <motion.div
           key={i}
           ref={(el) => el && (trailsRef.current[i] = el)}
-          className="fixed w-3 h-3 pointer-events-none z-50 mix-blend-screen"
+          className="fixed w-4 h-4 pointer-events-none z-50 ${theme === 'night' ? ' mix-blend-screen' : ' mix-blend-multiply'}"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.5 }}
           transition={{ duration: 0.3, delay: i * 0.1 }}

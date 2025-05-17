@@ -38,7 +38,7 @@ export default function Skills() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <div className="absolute inset-0 bg-forest-accent/10 rounded-lg blur-xl" />
-            <div className="relative bg-forest-dark/30 rounded-lg p-6 backdrop-blur-sm border border-forest-accent/20 h-full">
+            <div className={`relative rounded-lg p-6 h-full backdrop-blur-sm ${theme === 'day' ? 'border border-forest-accent/30 content-bg ' : 'border border-forest-accent/30 content-bg '}`}>
               <Icon className="w-8 h-8 text-forest-accent mb-4" />
               <h3 className={`text-lg font-bold ${theme === 'day' ? 'text-black' : 'text-white'} mb-3`}>
                 {skill.category}

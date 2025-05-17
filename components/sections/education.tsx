@@ -15,7 +15,7 @@ export default function Education() {
       transition={{ duration: 0.5 }}
     >
       <div className="absolute inset-0 bg-forest-accent/10 rounded-lg blur-xl" />
-      <div className="relative bg-forest-dark/30 rounded-lg p-8 backdrop-blur-sm border border-forest-accent/20">
+      <div className={`relative rounded-lg p-6 h-full backdrop-blur-sm ${theme === 'day' ? 'content-bg ' : 'content-bg '}`}>
         <div className="flex flex-col space-y-6">
           <div className="flex items-start space-x-4">
             <GraduationCap className="w-6 h-6 text-forest-accent mt-1" />
